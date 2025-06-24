@@ -35,6 +35,7 @@ body {
   padding-bottom: 12.61rem;
   font-weight: 400;
   line-height: 2.6rem;
+  min-height: 100dvh;
 }
 
 main {
@@ -43,6 +44,8 @@ main {
   column-gap: 3.2rem;
   width: 100%;
   max-width: 111.2rem;
+  margin-left: 4rem;
+  margin-right: 4rem;
 }
 
 header {
@@ -91,9 +94,13 @@ img {
 #new {
   grid-column: 3/4;
   grid-row: 2/4;
-  padding: 3.25rem 2.4rem;
+  padding: 2.4rem;
   background-color: var(--Very-dark-blue);
   color: var(--Grayish-blue);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #new h2 {
@@ -104,12 +111,17 @@ img {
   margin-bottom: 3.2rem;
 }
 
-#new h3 {
+#new a {
+  text-decoration: none;
   font-size: 2rem;
   font-weight: 700;
   line-height: 2.4rem;
   margin-bottom: 0.8rem;
   color: var(--Off-white);
+}
+
+#new a:hover {
+  color: var(--Soft-orange);
 }
 
 #new hr {
@@ -120,7 +132,7 @@ img {
 
 h1 {
   font-size: 5.8rem;
-  font-weight: 700;
+  font-weight: 900;
   line-height: 5.6rem;
   color: var(--Very-dark-blue);
 }
@@ -128,7 +140,7 @@ h1 {
 #image-web-3-content {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 3.2rem;
   align-items: flex-start;
 }
 
@@ -143,6 +155,11 @@ h1 {
   font-family: inherit;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+.btn:hover {
+  background-color: var(--Very-dark-blue);
+  color: var(--Off-white);
 }
 
 .card {
@@ -165,8 +182,63 @@ h1 {
   color: var(--Soft-red);
 }
 
-.card h3 {
+.card a {
+  text-decoration: none;
   font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: 900;
   color: var(--Very-dark-blue);
+}
+
+.card a:hover {
+  color: var(--Soft-red);
+}
+
+@media (max-width: 930px) {
+  body {
+    padding-top: 2.8rem;
+    padding-bottom: 8rem;
+  }
+
+  main {
+    grid-template-columns: 1fr;
+    column-gap: 3.2rem;
+    max-width: 60.8rem;
+    margin-left: 1.6rem;
+    margin-right: 1.6rem;
+  }
+
+  header figure {
+    display: flex;
+    height: 2.8rem;
+  }
+
+  header ul {
+    display: none;
+  }
+
+  #image-web-3 {
+    grid-column: 1/2;
+  }
+
+  #new {
+    grid-column: 1/2;
+    grid-row: auto;
+    padding: 3.2rem;
+  }
+
+  #image-web-3-content {
+    margin-bottom: 6.4rem;
+  }
+
+  .card {
+    height: 12.7rem;
+  }
+
+  .card__number {
+    margin-top: auto;
+  }
+
+  .card__text {
+    margin-bottom: auto;
+  }
 }
