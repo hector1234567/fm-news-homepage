@@ -31,11 +31,10 @@ body {
   justify-content: center;
   background-color: var(--Off-white);
   color: var(--Dark-grayish-blue);
-  padding-top: 8.9rem;
-  padding-bottom: 12.61rem;
   font-weight: 400;
   line-height: 2.6rem;
   min-height: 100dvh;
+  position: relative;
 }
 
 main {
@@ -44,8 +43,7 @@ main {
   column-gap: 3.2rem;
   width: 100%;
   max-width: 111.2rem;
-  margin-left: 4rem;
-  margin-right: 4rem;
+  margin: 8.9rem 4rem 12.61rem 4rem;
 }
 
 header {
@@ -58,6 +56,7 @@ header {
 header figure {
   display: flex;
   height: 3.99rem;
+  margin-right: auto;
 }
 
 header ul {
@@ -76,6 +75,118 @@ header a {
 
 header a:hover {
   color: var(--Soft-red);
+}
+
+#switch-menu {
+  display: none;
+}
+
+header label[for="switch-menu"] {
+  width: 4rem;
+  height: 0.3rem;
+  background-color: var(--Very-dark-blue);
+  position: relative;
+  z-index: 10;
+
+  display: none;
+}
+
+header label[for="switch-menu"]::before {
+  content: "";
+  display: block;
+  width: 4rem;
+  height: 0.3rem;
+  background-color: var(--Very-dark-blue);
+  position: absolute;
+  top: 0.7rem;
+  transition: all 0.2s ease;
+}
+
+header label[for="switch-menu"]::after {
+  content: "";
+  display: block;
+  width: 4rem;
+  height: 0.3rem;
+  background-color: var(--Very-dark-blue);
+  position: absolute;
+  bottom: 0.7rem;
+  transition: all 0.2s ease;
+}
+
+header:has(#switch-menu:checked) label[for="switch-menu"] {
+  height: 0;
+}
+
+header:has(#switch-menu:checked) label[for="switch-menu"]::before {
+  transform: rotate(45deg) translate(-0.65rem, -0.45rem);
+}
+
+header:has(#switch-menu:checked) label[for="switch-menu"]::after {
+  transform: rotate(-45deg) translate(-0.85rem, 0.45rem);
+}
+
+@keyframes toLeftBounce {
+  0% {
+    width: 0;
+  }
+  70% {
+    width: 52dvw;
+  }
+  100% {
+    width: 50dvw;
+  }
+}
+
+aside {
+  position: fixed;
+  right: 0;
+  background-color: var(--Off-white);
+  width: 50dvw;
+  min-height: 100dvh;
+  z-index: 5;
+  display: none;
+  animation-name: toLeftBounce;
+  animation-duration: 0.7s;
+  animation-timing-function: ease-out;
+  animation-direction: normal;
+}
+
+body:has(#switch-menu:checked) aside {
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--Very-dark-blue);
+  opacity: 0.5;
+  display: none;
+  transition: all 0.7s;
+}
+
+body:has(#switch-menu:checked) .overlay {
+  display: block;
+}
+
+aside ul {
+  list-style: none;
+  margin-top: 14.5rem;
+  margin-left: 3.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+aside a {
+  text-decoration: none;
+  color: var(--Very-dark-blue);
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+}
+
+aside a:hover {
+  color: var(--Soft-orange);
 }
 
 img {
@@ -194,27 +305,28 @@ h1 {
 }
 
 @media (max-width: 930px) {
-  body {
-    padding-top: 2.8rem;
-    padding-bottom: 8rem;
-  }
-
   main {
     grid-template-columns: 1fr;
     column-gap: 3.2rem;
     max-width: 60.8rem;
     margin-left: 1.6rem;
     margin-right: 1.6rem;
+    margin-top: 2.8rem;
+    margin-bottom: 8rem;
+  }
+
+  header {
+    margin-bottom: 3.2rem;
   }
 
   header figure {
     display: flex;
     height: 2.8rem;
   }
-
+  /* 
   header ul {
     display: none;
-  }
+  } */
 
   #image-web-3 {
     grid-column: 1/2;
@@ -226,8 +338,17 @@ h1 {
     padding: 3.2rem;
   }
 
+  #new h2 {
+    font-size: 4rem;
+  }
+
   #image-web-3-content {
     margin-bottom: 6.4rem;
+  }
+
+  h1 {
+    font-size: 4rem;
+    margin-bottom: 2.4rem;
   }
 
   .card {
@@ -240,5 +361,31 @@ h1 {
 
   .card__text {
     margin-bottom: auto;
+  }
+}
+
+@media (max-width: 635px) {
+  header label[for="switch-menu"] {
+    display: block;
+  }
+
+  header ul {
+    display: none;
+  }
+
+  header:has(#switch-menu:checked) label[for="switch-menu"] {
+    position: fixed;
+    top: 4rem;
+    right: 2rem;
+  }
+}
+
+@media (max-width: 450px) {
+  #new {
+    padding: 1.6rem;
+  }
+
+  #new h2 {
+    font-size: 3.2rem;
   }
 }
